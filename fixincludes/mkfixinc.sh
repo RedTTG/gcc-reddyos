@@ -11,6 +11,14 @@ target=fixinc.sh
 
 # Check for special fix rules for particular targets
 case $machine in
+    *-reddyos* | \
+    *-*-reddyos* | \
+    i?86-*-cygwin* | \
+    powerpcle-*-eabi* )
+  #  IF there is no include fixing,
+  #  THEN create a no-op fixer and exit
+  (echo "#! /bin/sh" ; echo "exit 0" ) > ${target}
+	      ;;
     i?86-*-cygwin* | \
     *-mingw32* | \
     powerpc-*-eabisim* | \
